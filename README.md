@@ -7,3 +7,13 @@ Après avoir ajoutée l'application `dockercloud/hello-world` et installé docke
 On a ensuite build l'application à l'aide de `docker-compose up`. Nous obtenons alors le résultat suivant :  
 ![Résultat app lancée](first_docker.png)
 
+IDE utilisé: Atom avec plusieurs plugins d'install�s :
+ - nba-scoreboard (pour suivre en direct l'actualité du basketball)
+ - atom-discord (pour discuter en direct avec ses co�quipiers de last project) 
+ - java-plus (pour am�liorer le dev java)
+ - autocomplete-java (pour l'autocomp java)
+ - java-class-complete (pour la generation de code)
+ - php-cs-fixer (vérifie partiellement le code ... parceque oui encore des gens utilisent php...)
+
+Shell utilisé : ZSH - Oh-My-Zs, voir ```.zshrc``` présent dans le git. 2 plugins instalé�s : docker et autocompletion
+
