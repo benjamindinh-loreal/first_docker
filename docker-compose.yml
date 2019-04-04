@@ -1,0 +1,44 @@
+#Version of docker compose
+version: '2'
+#List of all the services
+services:
+  #Container web
+  web:
+    #Load image dockercloud/helloworld (take the assosiated Dockerfile)
+    image: dockercloud/hello-world
+    #Open the port 8080
+    ports:
+      - 8080
+    #Linked to 2 networks (inside docker and not the container)
+    networks:
+      - front-tier
+      - back-tier
+
+  redis:
+    image: redis
+     #Link this container to web one to use "web" as a hostname inside this one
+    links:
+      - web
+    networks:
+      - back-tier
+
+  lb:
+    image: dockercloud/haproxy
+    #Links the port 80 of the machine to the port 80 of the container
+    ports:
+      - 80:80
+    links:
+      - web
+    networks:
+      - front-tier
+      - back-tier
+    #On the machine that lauch the container, the folder /var/run/docker.sock will contains the files of the container that are located at /var/run/docker
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock 
+#Definition of the networks
+networks:
+  #Use bridge volume driver bridge form thoose networks
+  front-tier:
+    driver: bridge
+  back-tier:
+    driver: bridge
