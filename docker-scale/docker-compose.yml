@@ -1,0 +1,30 @@
+version: '2'
+services:
+  web:
+    image: dockercloud/hello-world
+    ports:
+      - 8081:80
+    networks:
+      - front
+    #environment:
+      #- VIRTUAL_HOST = webscale
+  web2:
+    image: dockercloud/hello-world
+    ports:
+      - 8082:80
+    #environment:
+      #- VIRTUAL_HOST = webscale
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+  whoami:
+    image: jwilder/whoami
+    environment:
+      - VIRTUAL_HOST=whoami.local
+
+networks:
+  front:
+    driver: bridge
