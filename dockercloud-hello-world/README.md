@@ -4,7 +4,7 @@ Après avoir ajoutée l'application `dockercloud/hello-world` et installé docke
 	    - "8080:80"`
   
 On a ensuite build l'application à l'aide de `docker-compose up`. Nous obtenons alors le résultat suivant :  
-![Résultat app lancée](first_docker.png)
+![Résultat app lancée](../first_docker.png)
 
 hello-world
 ===========
